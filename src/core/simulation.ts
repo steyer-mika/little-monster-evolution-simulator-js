@@ -1,4 +1,4 @@
-import type { Renderer } from "@/services/renderer.service";
+import type { Renderer } from "@/core/renderer";
 
 import type { Sandbox } from "./sandbox";
 

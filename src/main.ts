@@ -1,7 +1,7 @@
 import { Monster } from "@/core/entities/monster.entity";
+import { Renderer } from "@/core/renderer";
 import { Sandbox } from "@/core/sandbox";
 import { Simulation } from "@/core/simulation";
-import { Renderer } from "@/services/renderer.service";
 
 import "@/style.css";
 

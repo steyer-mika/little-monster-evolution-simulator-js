@@ -1,6 +1,6 @@
 import type { Sandbox } from "@/core/sandbox";
 
-import { DOMService } from "./dom.service";
+import { DOMService } from "../services/dom.service";
 
 export class Renderer {
   private readonly canvas = DOMService.get<HTMLCanvasElement>("#renderer");
