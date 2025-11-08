@@ -9,10 +9,10 @@ export class Monster extends Entity {
     super(x, y);
   }
 
-  action() {
-    // simple wandering behavior
-    this.x += (Math.random() - 0.5) * this.speed;
-    this.y += (Math.random() - 0.5) * this.speed;
+  update(deltaTime: number) {
+    // simple wandering behavior for now
+    this.x += (Math.random() - 0.5) * this.speed * deltaTime;
+    this.y += (Math.random() - 0.5) * this.speed * deltaTime;
 
     // clamp the position so the monster stays inside the sandbox
     this.x = Math.max(0, Math.min(this.x, CONSTANTS.sandbox.width));

@@ -7,9 +7,9 @@ export class Sandbox {
     this.entities.push(entity);
   }
 
-  public action(): void {
+  public update(dt: number): void {
     for (const e of this.entities) {
-      e.action();
+      e.update(dt);
     }
   }
 }
