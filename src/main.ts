@@ -18,13 +18,13 @@ const simulation = new Simulation(renderer, sandbox, debugService);
 for (let i = 0; i < 5; i++) {
   const { x, y } = randomSandboxCoordinate();
 
-  sandbox.add(new Monster(x, y));
+  sandbox.addMonster(new Monster(x, y));
 }
 
 for (let i = 0; i < randomIntFromInterval(2, 15); i++) {
   const { x, y } = randomSandboxCoordinate();
 
-  sandbox.add(new Food(x, y));
+  sandbox.addFood(new Food(x, y));
 }
 
 simulation.start();

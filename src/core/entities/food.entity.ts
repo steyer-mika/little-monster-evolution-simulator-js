@@ -5,9 +5,9 @@ export class Food extends Entity {
     super(x, y);
   }
 
-  update() {}
+  public override update() {}
 
-  render(ctx: CanvasRenderingContext2D) {
+  public override render(ctx: CanvasRenderingContext2D) {
     const px = Math.round(this.x);
     const py = Math.round(this.y);
 

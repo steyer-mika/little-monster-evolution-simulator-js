@@ -11,20 +11,18 @@ export class Monster extends Entity {
     super(x, y);
   }
 
-  update(deltaTime: number, sandbox: Sandbox) {
+  public override update(deltaTime: number, sandbox: Sandbox) {
     // Find the nearest food
     let nearestFood: Food | null = null;
     let minDist = Infinity;
 
-    for (const e of sandbox.entities) {
-      if (e instanceof Food) {
-        const dx = e.x - this.x;
-        const dy = e.y - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < minDist) {
-          minDist = dist;
-          nearestFood = e;
-        }
+    for (const e of sandbox.food) {
+      const dx = e.x - this.x;
+      const dy = e.y - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < minDist) {
+        minDist = dist;
+        nearestFood = e;
       }
     }
 
@@ -43,8 +41,7 @@ export class Monster extends Entity {
       if (minDist < 5) {
         // Eat the food
         this.foodEaten++;
-        const index = sandbox.entities.indexOf(nearestFood);
-        if (index !== -1) sandbox.entities.splice(index, 1);
+        sandbox.removeFood(nearestFood);
       }
     } else {
       // do nothing for now
@@ -55,7 +52,7 @@ export class Monster extends Entity {
     this.y = Math.max(0, Math.min(this.y, CONSTANTS.sandbox.height));
   }
 
-  render(ctx: CanvasRenderingContext2D) {
+  public override render(ctx: CanvasRenderingContext2D) {
     const px = Math.round(this.x);
     const py = Math.round(this.y);
 

@@ -1,17 +1,32 @@
 import { CONSTANTS } from '@/constants';
-import type { Entity } from '@/core/entities/entity';
 import { Food } from '@/core/entities/food.entity';
+import type { Monster } from '@/core/entities/monster.entity';
 import { randomIntFromInterval } from '@/utility/random';
 import { randomSandboxCoordinate } from '@/utility/random-sandbox-coordinate';
 
 export class Sandbox {
-  public entities: Entity[] = [];
+  public monsters: Monster[] = [];
+  public food: Food[] = [];
 
   private elapsedTime = 0;
   public currentDay = 1;
 
-  public add(entity: Entity): void {
-    this.entities.push(entity);
+  public addMonster(monster: Monster): void {
+    this.monsters.push(monster);
+  }
+
+  public addFood(food: Food): void {
+    this.food.push(food);
+  }
+
+  public removeMonster(monster: Monster): void {
+    const index = this.monsters.indexOf(monster);
+    if (index !== -1) this.monsters.splice(index, 1);
+  }
+
+  public removeFood(food: Food): void {
+    const index = this.food.indexOf(food);
+    if (index !== -1) this.food.splice(index, 1);
   }
 
   public update(dt: number): void {
@@ -23,20 +38,23 @@ export class Sandbox {
       this.elapsedTime = 0;
     }
 
-    for (const e of this.entities) {
-      e.update(dt, this);
+    for (const food of this.food) {
+      food.update();
+    }
+
+    for (const monster of this.monsters) {
+      monster.update(dt, this);
     }
   }
 
   private nextDay() {
     this.currentDay++;
 
-    // Remove all old food
-    this.entities = this.entities.filter((e) => !(e instanceof Food));
+    this.food = [];
 
     for (let i = 0; i < randomIntFromInterval(2, 10); i++) {
       const { x, y } = randomSandboxCoordinate();
-      this.add(new Food(x, y));
+      this.addFood(new Food(x, y));
     }
   }
 }
