@@ -1,3 +1,5 @@
+import type { Sandbox } from "@/core/sandbox";
+
 export abstract class Entity {
   x: number;
   y: number;
@@ -7,7 +9,7 @@ export abstract class Entity {
     this.y = y;
   }
 
-  abstract update(deltaTime: number): void;
+  abstract update(deltaTime: number, sandbox: Sandbox): void;
 
   abstract render(ctx: CanvasRenderingContext2D): void;
 }
