@@ -13,7 +13,7 @@ export class Food extends Entity {
 
     ctx.beginPath();
     ctx.arc(px, py, 3, 0, Math.PI * 2);
-    ctx.fillStyle = '#ff1111';
+    ctx.fillStyle = '#ccc';
     ctx.fill();
   }
 }

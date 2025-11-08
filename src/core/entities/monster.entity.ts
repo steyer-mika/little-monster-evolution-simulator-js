@@ -61,7 +61,7 @@ export class Monster extends Entity {
 
     ctx.beginPath();
     ctx.arc(px, py, 3 + this.foodEaten, 0, Math.PI * 2);
-    ctx.fillStyle = '#ccc';
+    ctx.fillStyle = '#ff1111';
     ctx.fill();
   }
 }
