@@ -5,7 +5,6 @@ import { Food } from "@/core/entities/food.entity";
 export class Sandbox {
   public entities: Entity[] = [];
 
-  private dayLength = 10; // 10 seconds per day
   private elapsedTime = 0;
   public currentDay = 1;
 
@@ -17,7 +16,7 @@ export class Sandbox {
     this.elapsedTime += dt;
 
     // Check if a day has passed
-    if (this.elapsedTime >= this.dayLength) {
+    if (this.elapsedTime >= CONSTANTS.simulation.dayDurationMs) {
       this.nextDay();
       this.elapsedTime = 0;
     }

@@ -1,7 +1,6 @@
 export const CONSTANTS = {
   simulation: {
-    actionsPerDay: 20,
-    dayDurationMs: 30000, // 30 seconds
+    dayDurationMs: 10, // 10 seconds per day
   },
 
   rendering: {
