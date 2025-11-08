@@ -16,8 +16,6 @@ export class Sandbox {
   public update(dt: number): void {
     this.elapsedTime += dt;
 
-    console.log(this.elapsedTime);
-
     // Check if a day has passed
     if (this.elapsedTime >= this.dayLength) {
       this.nextDay();
@@ -31,7 +29,6 @@ export class Sandbox {
 
   private nextDay() {
     this.currentDay++;
-    console.log(`Day ${this.currentDay} begins!`);
 
     // Remove all old food
     this.entities = this.entities.filter((e) => !(e instanceof Food));

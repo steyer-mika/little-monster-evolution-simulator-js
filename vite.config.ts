@@ -8,5 +8,3 @@ export default defineConfig({
     },
   },
 });
-
-console.log("qwe");
