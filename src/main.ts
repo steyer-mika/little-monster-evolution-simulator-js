@@ -6,6 +6,8 @@ import { Simulation } from "@/core/simulation";
 import { DebugService } from "@/services/debug.service";
 
 import "@/style.css";
+import { randomIntFromInterval } from "@/utility/random";
+import { randomSandboxCoordinate } from "@/utility/random-sandbox-coordinate";
 
 const renderer = new Renderer();
 const debugService = new DebugService();
@@ -14,11 +16,15 @@ const sandbox = new Sandbox();
 const simulation = new Simulation(renderer, sandbox, debugService);
 
 for (let i = 0; i < 5; i++) {
-  sandbox.add(new Monster(60 + i * 40, 50));
+  const { x, y } = randomSandboxCoordinate();
+
+  sandbox.add(new Monster(x, y));
 }
 
-for (let i = 0; i < 5; i++) {
-  sandbox.add(new Food(160 + i * 40, 150));
+for (let i = 0; i < randomIntFromInterval(2, 15); i++) {
+  const { x, y } = randomSandboxCoordinate();
+
+  sandbox.add(new Food(x, y));
 }
 
 simulation.start();

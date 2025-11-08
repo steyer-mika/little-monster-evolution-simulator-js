@@ -1,6 +1,8 @@
 import { CONSTANTS } from "@/constants";
 import type { Entity } from "@/core/entities/entity";
 import { Food } from "@/core/entities/food.entity";
+import { randomIntFromInterval } from "@/utility/random";
+import { randomSandboxCoordinate } from "@/utility/random-sandbox-coordinate";
 
 export class Sandbox {
   public entities: Entity[] = [];
@@ -32,10 +34,8 @@ export class Sandbox {
     // Remove all old food
     this.entities = this.entities.filter((e) => !(e instanceof Food));
 
-    // Spawn new food (example: 5 pieces at random positions)
-    for (let i = 0; i < 5; i++) {
-      const x = Math.random() * CONSTANTS.sandbox.width;
-      const y = Math.random() * CONSTANTS.sandbox.height;
+    for (let i = 0; i < randomIntFromInterval(2, 10); i++) {
+      const { x, y } = randomSandboxCoordinate();
       this.add(new Food(x, y));
     }
   }
