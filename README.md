@@ -1,11 +1,6 @@
-Here is a clean, readable **README-ready** Markdown concept for your project.
-It’s structured, fun, and leaves room for future expansion without being chaotic.
-
----
-
 # Tiny Monster Evolution Simulator
 
-*A procedural life sandbox inspired by Pokémon ecology*
+*A procedural life sandbox inspired by Pokémon ecology and https://www.youtube.com/watch?v=0ZGbIKd0XrM*
 
 This project simulates a tiny digital ecosystem filled with evolving little monsters. Each monster roams the map, searches for food, survives danger, and passes traits down to its children. Over time, the ecosystem shifts as successful traits spread and others vanish.
 
