@@ -1,19 +1,28 @@
 import type { Renderer } from "@/core/renderer";
-
-import type { Sandbox } from "./sandbox";
+import type { Sandbox } from "@/core/sandbox";
+import type { DebugService } from "@/services/debug.service";
 
 export class Simulation {
   private readonly renderer: Renderer;
   private readonly sandbox: Sandbox;
+  private readonly debugService: DebugService;
 
-  private readonly SMOOTHING_FACTOR = 0.1; // smaller = smoother but more lag
-  private smoothedDt = 1 / 60; // 60 FPS
+  private readonly SMOOTHING_FACTOR = 0.1;
+  private smoothedDt = 1 / 60;
+
+  private readonly UPDATE_STEP = 1 / 30; // fixed update step: 30 times per second
+  private accumulatedTime = 0;
 
   lastTime = 0;
 
-  constructor(renderer: Renderer, sandbox: Sandbox) {
+  constructor(
+    renderer: Renderer,
+    sandbox: Sandbox,
+    debugService: DebugService
+  ) {
     this.renderer = renderer;
     this.sandbox = sandbox;
+    this.debugService = debugService;
   }
 
   start() {
@@ -28,6 +37,15 @@ export class Simulation {
     this.smoothedDt =
       this.smoothedDt * (1 - this.SMOOTHING_FACTOR) +
       rawDt * this.SMOOTHING_FACTOR;
+
+    // accumulate elapsed time
+    this.accumulatedTime += this.smoothedDt;
+
+    // run fixed-step updates
+    while (this.accumulatedTime >= this.UPDATE_STEP) {
+      this.debugService.update(1 / rawDt, this.sandbox.currentDay, t);
+      this.accumulatedTime -= this.UPDATE_STEP;
+    }
 
     this.sandbox.update(this.smoothedDt);
     this.renderer.render(this.sandbox);

@@ -3,10 +3,12 @@ import { Monster } from "@/core/entities/monster.entity";
 import { Renderer } from "@/core/renderer";
 import { Sandbox } from "@/core/sandbox";
 import { Simulation } from "@/core/simulation";
+import { DebugService } from "@/services/debug.service";
 
 import "@/style.css";
 
 const renderer = new Renderer();
+const debugService = new DebugService();
 
 const simulate = () => {
   const sandbox = new Sandbox();
@@ -19,7 +21,7 @@ const simulate = () => {
     sandbox.add(new Food(160 + i * 40, 150));
   }
 
-  const simulation = new Simulation(renderer, sandbox);
+  const simulation = new Simulation(renderer, sandbox, debugService);
 
   simulation.start();
 };
