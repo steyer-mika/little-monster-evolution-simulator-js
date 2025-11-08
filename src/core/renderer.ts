@@ -3,13 +3,26 @@ import type { Sandbox } from "@/core/sandbox";
 import { DOMService } from "../services/dom.service";
 
 export class Renderer {
-  private readonly canvas = DOMService.get<HTMLCanvasElement>("#renderer");
+  private readonly canvas: HTMLCanvasElement;
 
-  private readonly context = this.canvas.getContext("2d");
+  private readonly context: CanvasRenderingContext2D;
+
+  constructor() {
+    this.canvas = DOMService.get<HTMLCanvasElement>("#renderer");
+
+    const context = this.canvas.getContext("2d");
+
+    if (!context) {
+      throw new Error("Could not get context of canvas #renderer");
+    }
+
+    this.context = context;
+
+    this.canvas.width = 640;
+    this.canvas.height = 360;
+  }
 
   public render(sandbox: Sandbox): void {
-    if (!this.context) return;
-
     this.context.clearRect(
       0,
       0,
