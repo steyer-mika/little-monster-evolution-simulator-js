@@ -1,13 +1,13 @@
-import { Food } from "@/core/entities/food.entity";
-import { Monster } from "@/core/entities/monster.entity";
-import { Renderer } from "@/core/renderer";
-import { Sandbox } from "@/core/sandbox";
-import { Simulation } from "@/core/simulation";
-import { DebugService } from "@/services/debug.service";
+import { Food } from '@/core/entities/food.entity';
+import { Monster } from '@/core/entities/monster.entity';
+import { Renderer } from '@/core/renderer';
+import { Sandbox } from '@/core/sandbox';
+import { Simulation } from '@/core/simulation';
+import { DebugService } from '@/services/debug.service';
 
-import "@/style.css";
-import { randomIntFromInterval } from "@/utility/random";
-import { randomSandboxCoordinate } from "@/utility/random-sandbox-coordinate";
+import '@/style.css';
+import { randomIntFromInterval } from '@/utility/random';
+import { randomSandboxCoordinate } from '@/utility/random-sandbox-coordinate';
 
 const renderer = new Renderer();
 const debugService = new DebugService();
@@ -29,7 +29,7 @@ for (let i = 0; i < randomIntFromInterval(2, 15); i++) {
 
 simulation.start();
 
-document.addEventListener("visibilitychange", () => {
+document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
     simulation.stop();
   } else {

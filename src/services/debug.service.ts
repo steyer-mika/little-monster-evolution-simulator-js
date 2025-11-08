@@ -1,5 +1,5 @@
-import { DOMService } from "@/services/dom.service";
-import { toReadableDuration } from "@/utility/time.format";
+import { DOMService } from '@/services/dom.service';
+import { toReadableDuration } from '@/utility/time.format';
 
 export class DebugService {
   private readonly fpsDisplay: HTMLDivElement;
@@ -7,10 +7,10 @@ export class DebugService {
   private readonly elapsedTimeDisplay: HTMLDivElement;
 
   constructor() {
-    this.fpsDisplay = DOMService.get<HTMLDivElement>("#fps-display");
-    this.dayCountDisplay = DOMService.get<HTMLDivElement>("#day-count-display");
+    this.fpsDisplay = DOMService.get<HTMLDivElement>('#fps-display');
+    this.dayCountDisplay = DOMService.get<HTMLDivElement>('#day-count-display');
     this.elapsedTimeDisplay = DOMService.get<HTMLDivElement>(
-      "#elapsed-time-display"
+      '#elapsed-time-display',
     );
   }
 

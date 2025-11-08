@@ -1,6 +1,6 @@
-import type { Renderer } from "@/core/renderer";
-import type { Sandbox } from "@/core/sandbox";
-import type { DebugService } from "@/services/debug.service";
+import type { Renderer } from '@/core/renderer';
+import type { Sandbox } from '@/core/sandbox';
+import type { DebugService } from '@/services/debug.service';
 
 export class Simulation {
   private readonly renderer: Renderer;
@@ -18,7 +18,7 @@ export class Simulation {
   constructor(
     renderer: Renderer,
     sandbox: Sandbox,
-    debugService: DebugService
+    debugService: DebugService,
   ) {
     this.renderer = renderer;
     this.sandbox = sandbox;

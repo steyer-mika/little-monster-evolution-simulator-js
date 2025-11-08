@@ -1,4 +1,4 @@
-import type { Sandbox } from "@/core/sandbox";
+import type { Sandbox } from '@/core/sandbox';
 
 export abstract class Entity {
   x: number;

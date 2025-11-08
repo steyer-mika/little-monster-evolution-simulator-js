@@ -1,8 +1,8 @@
-import { CONSTANTS } from "@/constants";
+import { CONSTANTS } from '@/constants';
 
-import { Food } from "@/core/entities/food.entity";
-import type { Sandbox } from "@/core/sandbox";
-import { Entity } from "./entity";
+import { Food } from '@/core/entities/food.entity';
+import type { Sandbox } from '@/core/sandbox';
+import { Entity } from './entity';
 export class Monster extends Entity {
   speed = 50;
   foodEaten = 0; // track food eaten
@@ -61,7 +61,7 @@ export class Monster extends Entity {
 
     ctx.beginPath();
     ctx.arc(px, py, 3 + this.foodEaten, 0, Math.PI * 2);
-    ctx.fillStyle = "#ccc";
+    ctx.fillStyle = '#ccc';
     ctx.fill();
   }
 }

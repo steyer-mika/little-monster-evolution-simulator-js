@@ -1,8 +1,8 @@
-import { CONSTANTS } from "@/constants";
-import type { Entity } from "@/core/entities/entity";
-import { Food } from "@/core/entities/food.entity";
-import { randomIntFromInterval } from "@/utility/random";
-import { randomSandboxCoordinate } from "@/utility/random-sandbox-coordinate";
+import { CONSTANTS } from '@/constants';
+import type { Entity } from '@/core/entities/entity';
+import { Food } from '@/core/entities/food.entity';
+import { randomIntFromInterval } from '@/utility/random';
+import { randomSandboxCoordinate } from '@/utility/random-sandbox-coordinate';
 
 export class Sandbox {
   public entities: Entity[] = [];
