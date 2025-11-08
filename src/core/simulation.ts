@@ -1,5 +1,6 @@
 import { CONSTANTS } from "@/constants";
 import type { Renderer } from "@/core/renderer";
+
 import type { Sandbox } from "./sandbox";
 
 export class Simulation {

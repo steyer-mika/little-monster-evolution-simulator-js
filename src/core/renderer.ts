@@ -1,5 +1,6 @@
 import type { Sandbox } from "@/core/sandbox";
 
+import { CONSTANTS } from "@/constants";
 import { DOMService } from "../services/dom.service";
 
 export class Renderer {
@@ -18,8 +19,8 @@ export class Renderer {
 
     this.context = context;
 
-    this.canvas.width = 640;
-    this.canvas.height = 360;
+    this.canvas.width = CONSTANTS.sandbox.width;
+    this.canvas.height = CONSTANTS.sandbox.height;
   }
 
   public render(sandbox: Sandbox): void {

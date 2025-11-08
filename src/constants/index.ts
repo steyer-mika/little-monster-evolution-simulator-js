@@ -7,4 +7,9 @@ export const CONSTANTS = {
   rendering: {
     fps: 60,
   },
+
+  sandbox: {
+    width: 640,
+    height: 360,
+  },
 } as const;
