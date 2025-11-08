@@ -7,10 +7,10 @@ export class Monster extends Entity {
     super(x, y);
   }
 
-  update(deltaTime: number) {
+  action() {
     // simple wandering behavior for now
-    this.x += (Math.random() - 0.5) * this.speed * deltaTime;
-    this.y += (Math.random() - 0.5) * this.speed * deltaTime;
+    this.x += (Math.random() - 0.5) * this.speed;
+    this.y += (Math.random() - 0.5) * this.speed;
   }
 
   render(ctx: CanvasRenderingContext2D) {

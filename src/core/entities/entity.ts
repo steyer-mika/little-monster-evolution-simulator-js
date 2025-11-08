@@ -7,7 +7,7 @@ export abstract class Entity {
     this.y = y;
   }
 
-  abstract update(deltaTime: number): void;
+  abstract action(): void;
 
   abstract render(ctx: CanvasRenderingContext2D): void;
 }
