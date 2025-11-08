@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { defineConfig } from 'vite';
+import checker from 'vite-plugin-checker';
 
 export default defineConfig({
   resolve: {
@@ -7,4 +8,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src/'),
     },
   },
+  plugins: [
+    checker({
+      typescript: true,
+    }),
+  ],
 });
