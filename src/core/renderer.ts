@@ -29,7 +29,10 @@ export class Renderer {
       this.context.canvas.height,
     );
 
-    for (const entity of sandbox.entities) {
+    for (const entity of sandbox.food) {
+      entity.render(this.context);
+    }
+    for (const entity of sandbox.monsters) {
       entity.render(this.context);
     }
   }
