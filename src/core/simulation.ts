@@ -8,12 +8,12 @@ export class Simulation {
   private readonly debugService: DebugService;
 
   private readonly SMOOTHING_FACTOR = 0.1;
-  private smoothedDt = 1 / 60;
-
   private readonly UPDATE_STEP = 1 / 30; // fixed update step: 30 times per second
-  private accumulatedTime = 0;
 
-  lastTime = 0;
+  private smoothedDt = 1 / 60;
+  private accumulatedTime = 0;
+  private lastTime = 0;
+  private frameHandle: number | null = null;
 
   constructor(
     renderer: Renderer,
@@ -25,11 +25,19 @@ export class Simulation {
     this.debugService = debugService;
   }
 
-  start() {
-    requestAnimationFrame(this.frame);
+  public start() {
+    this.lastTime = performance.now();
+    this.frameHandle = requestAnimationFrame(this.frame);
   }
 
-  frame: FrameRequestCallback = (t: number) => {
+  public stop() {
+    if (this.frameHandle) {
+      cancelAnimationFrame(this.frameHandle);
+      this.frameHandle = null;
+    }
+  }
+
+  public frame: FrameRequestCallback = (t: number) => {
     const rawDt = (t - this.lastTime) / 1000;
     this.lastTime = t;
 
@@ -50,6 +58,6 @@ export class Simulation {
     this.sandbox.update(this.smoothedDt);
     this.renderer.render(this.sandbox);
 
-    requestAnimationFrame(this.frame);
+    this.frameHandle = requestAnimationFrame(this.frame);
   };
 }

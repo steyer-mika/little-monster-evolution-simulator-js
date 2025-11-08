@@ -9,21 +9,24 @@ import "@/style.css";
 
 const renderer = new Renderer();
 const debugService = new DebugService();
+const sandbox = new Sandbox();
 
-const simulate = () => {
-  const sandbox = new Sandbox();
+const simulation = new Simulation(renderer, sandbox, debugService);
 
-  for (let i = 0; i < 5; i++) {
-    sandbox.add(new Monster(60 + i * 40, 50));
+for (let i = 0; i < 5; i++) {
+  sandbox.add(new Monster(60 + i * 40, 50));
+}
+
+for (let i = 0; i < 5; i++) {
+  sandbox.add(new Food(160 + i * 40, 150));
+}
+
+simulation.start();
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    simulation.stop();
+  } else {
+    simulation.start();
   }
-
-  for (let i = 0; i < 5; i++) {
-    sandbox.add(new Food(160 + i * 40, 150));
-  }
-
-  const simulation = new Simulation(renderer, sandbox, debugService);
-
-  simulation.start();
-};
-
-simulate();
+});
